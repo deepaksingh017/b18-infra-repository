@@ -42,28 +42,28 @@ jobs:
 
       # Terraform Format Check
       - name: Terraform Format Check
-        working-directory: ./environment/preprod
+        working-directory: ./environmnet/preprod
         run: terraform fmt -check -recursive
 
       # Terraform Init
       - name: Terraform Init
-        working-directory: ./environment/preprod
+        working-directory: ./environmnet/preprod
         run: terraform init
 
       # Terraform Validate
       - name: Terraform Validate
-        working-directory: ./environment/preprod
+        working-directory: ./environmnet/preprod
         run: terraform validate
 
       # Terraform Plan
       - name: Terraform Plan
-        working-directory: ./environment/preprod
+        working-directory: ./environmnet/preprod
         run: terraform plan -out=tfplan
 
       # Security Scan
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@v12
         with:
-          directory: ./environment/preprod
+          directory: ./environmnet/preprod
           framework: terraform
           soft_fail: true
