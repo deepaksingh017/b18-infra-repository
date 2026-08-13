@@ -10,10 +10,10 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     steps:
       - name: Checkout repo
@@ -24,14 +24,14 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: ./environment
+        working-directory: ./environmnet/preprod
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: ./environment
+        working-directory: ./environmnet/preprod
 
       - name: Terraform Plan
-        working-directory: ./environment
+        working-directory: ./environmnet/preprod
         run: terraform plan -var-file="terraform.tfvars" -out=tfplan -input=false
 
       - name: Upload Plan Artifact
@@ -44,5 +44,5 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform apply -auto-approve tfplan
-        working-directory: ./environment
+        working-directory: ./environmnet/preprod
 
