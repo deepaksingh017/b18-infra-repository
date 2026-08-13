@@ -11,7 +11,7 @@ rgs = {
 
 storage_account = {
   storageaccoutprod = {
-    name                     = "storageaccount123deep"
+    name                     = "tanishistorage1"
     resourceGroup            = "frontend_prod_rg_deepak"
     location                 = "centralindia"
     account_tier             = "Standard"
@@ -19,7 +19,7 @@ storage_account = {
 
   }
   storageaccoutprod1 = {
-    name                     = "storageaccount1234deepakkumar"
+    name                     = "tanishistorage"
     resourceGroup            = "frontend_prod_rg1_deepak"
     location                 = "centralindia"
     account_tier             = "Standard"
